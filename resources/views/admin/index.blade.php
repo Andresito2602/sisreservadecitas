@@ -1,116 +1,122 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="row">
-        <h3><b>Bienvenido: </b> {{ Auth::user()->email }} / <b>Rol:</b> {{ Auth::user()->roles->pluck('name')->first() }}</h3>
-    </div>
 
-    <hr>
+    {{-- Saludo centrado --}}
+    <div style="text-align:center; margin-bottom: 32px;">
+        <h1 style="font-family: 'Playfair Display', 'Georgia', serif; font-size: 2.2rem; font-weight: 700; color: #0d1b2a; letter-spacing: -0.5px; margin-bottom: 6px;">
+            Bienvenido
+        </h1>
+        <p style="font-size: 15px; color: #5a7184; font-weight: 500;">
+            {{ Auth::user()->email }}
+        </p>
+        <span style="display:inline-block; margin-top:6px; padding: 4px 14px; background: #e8f0fe; border-radius: 20px; font-size: 12px; font-weight: 600; color: #1e6fff; text-transform: capitalize;">
+            {{ Auth::user()->roles->pluck('name')->first() ?? 'Usuario' }}
+        </span>
+    </div>
 
     {{-- Tarjetas de estadísticas --}}
     <div class="row">
 
         @can('admin.usuarios.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
+                <div class="small-box" style="background:#fff; border:2px solid #1e6fff; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_usuarios }}</h3>
-                        <p>Usuarios</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_usuarios }}</h3>
+                        <p style="color:#5a7184;">Usuarios</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-file-person"></i></div>
-                    <a href="{{ url('admin/usuarios') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+                    <div class="icon" style="color:#1e6fff; opacity:0.15;"><i class="ion fas bi bi-file-person"></i></div>
+                    <a href="{{ url('admin/usuarios') }}" class="small-box-footer" style="background:#1e6fff; color:#fff;">Más información <i class="fas bi bi-file-person"></i></a>
                 </div>
             </div>
         @endcan
 
         @can('admin.secretarias.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-primary">
+                <div class="small-box" style="background:#fff; border:2px solid #8b5cf6; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_secretarias }}</h3>
-                        <p>Secretarias</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_secretarias }}</h3>
+                        <p style="color:#5a7184;">Secretarias</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-person-circle"></i></div>
-                    <a href="{{ url('admin/secretarias') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+                    <div class="icon" style="color:#8b5cf6; opacity:0.15;"><i class="ion fas bi bi-person-circle"></i></div>
+                    <a href="{{ url('admin/secretarias') }}" class="small-box-footer" style="background:#8b5cf6; color:#fff;">Más información <i class="fas bi bi-file-person"></i></a>
                 </div>
             </div>
         @endcan
 
         @can('admin.pacientes.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-success">
+                <div class="small-box" style="background:#fff; border:2px solid #10b981; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_pacientes }}</h3>
-                        <p>Pacientes</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_pacientes }}</h3>
+                        <p style="color:#5a7184;">Pacientes</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-person-fill-check"></i></div>
-                    <a href="{{ url('admin/pacientes') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+                    <div class="icon" style="color:#10b981; opacity:0.15;"><i class="ion fas bi bi-person-fill-check"></i></div>
+                    <a href="{{ url('admin/pacientes') }}" class="small-box-footer" style="background:#10b981; color:#fff;">Más información <i class="fas bi bi-file-person"></i></a>
                 </div>
             </div>
         @endcan
 
         @can('admin.consultorios.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-warning">
+                <div class="small-box" style="background:#fff; border:2px solid #f59e0b; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_consultorios }}</h3>
-                        <p>Consultorios</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_consultorios }}</h3>
+                        <p style="color:#5a7184;">Consultorios</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-building-fill-add"></i></div>
-                    <a href="{{ url('admin/consultorios') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+                    <div class="icon" style="color:#f59e0b; opacity:0.15;"><i class="ion fas bi bi-building-fill-add"></i></div>
+                    <a href="{{ url('admin/consultorios') }}" class="small-box-footer" style="background:#f59e0b; color:#fff;">Más información <i class="fas bi bi-file-person"></i></a>
                 </div>
             </div>
         @endcan
 
         @can('admin.doctores.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-danger">
+                <div class="small-box" style="background:#fff; border:2px solid #ef4444; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_doctores }}</h3>
-                        <p>Doctores</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_doctores }}</h3>
+                        <p style="color:#5a7184;">Doctores</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-person-lines-fill"></i></div>
-                    <a href="{{ url('admin/doctores') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+                    <div class="icon" style="color:#ef4444; opacity:0.15;"><i class="ion fas bi bi-person-lines-fill"></i></div>
+                    <a href="{{ url('admin/doctores') }}" class="small-box-footer" style="background:#ef4444; color:#fff;">Más información <i class="fas bi bi-file-person"></i></a>
                 </div>
             </div>
         @endcan
 
         @can('admin.horarios.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-secondary">
+                <div class="small-box" style="background:#fff; border:2px solid #14b8a6; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_horarios }}</h3>
-                        <p>Horarios</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_horarios }}</h3>
+                        <p style="color:#5a7184;">Horarios</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-calendar2-week"></i></div>
-                    <a href="{{ url('admin/horarios') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+                    <div class="icon" style="color:#14b8a6; opacity:0.15;"><i class="ion fas bi bi-calendar2-week"></i></div>
+                    <a href="{{ url('admin/horarios') }}" class="small-box-footer" style="background:#14b8a6; color:#fff;">Más información <i class="fas bi bi-file-person"></i></a>
                 </div>
             </div>
         @endcan
 
-        {{-- Tarjeta Reservas: permiso correcto --}}
         @can('admin.reservas.reportes')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
+                <div class="small-box" style="background:#fff; border:2px solid #6366f1; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_eventos }}</h3>
-                        <p>Reservas</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_eventos }}</h3>
+                        <p style="color:#5a7184;">Reservas</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-calendar2-check"></i></div>
-                    <a href="{{ url('admin/reservas/reportes') }}" class="small-box-footer">Más información <i class="fas bi bi-calendar2-check"></i></a>
+                    <div class="icon" style="color:#6366f1; opacity:0.15;"><i class="ion fas bi bi-calendar2-check"></i></div>
+                    <a href="{{ url('admin/reservas/reportes') }}" class="small-box-footer" style="background:#6366f1; color:#fff;">Más información <i class="fas bi bi-calendar2-check"></i></a>
                 </div>
             </div>
         @endcan
 
-        {{-- Tarjeta Configuraciones: permiso correcto --}}
         @can('admin.configuraciones.index')
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-primary">
+                <div class="small-box" style="background:#fff; border:2px solid #0ea5e9; color:#0d1b2a;">
                     <div class="inner">
-                        <h3>{{ $total_configuraciones }}</h3>
-                        <p>Configuraciones</p>
+                        <h3 style="color:#0d1b2a;">{{ $total_configuraciones }}</h3>
+                        <p style="color:#5a7184;">Configuraciones</p>
                     </div>
-                    <div class="icon"><i class="ion fas bi bi-gear"></i></div>
-                    <a href="{{ url('/admin/configuraciones') }}" class="small-box-footer">Más información <i class="fas bi bi-gear"></i></a>
+                    <div class="icon" style="color:#0ea5e9; opacity:0.15;"><i class="ion fas bi bi-gear"></i></div>
+                    <a href="{{ url('/admin/configuraciones') }}" class="small-box-footer" style="background:#0ea5e9; color:#fff;">Más información <i class="fas bi bi-gear"></i></a>
                 </div>
             </div>
         @endcan

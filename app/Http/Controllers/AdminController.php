@@ -23,6 +23,7 @@ class AdminController extends Controller
        $total_horarios = Horario::count();
        $total_eventos = Event::count();
        $total_configuraciones = Configuracione::count();
+       $configuracion = Configuracione::latest()->first();
 
        $consultorios = Consultorio::all();
        $doctores = Doctor::all();
@@ -38,8 +39,8 @@ class AdminController extends Controller
             'doctores',
             'eventos',
             'total_eventos',
-       'total_configuraciones'
-
+           'total_configuraciones',
+           'configuracion'
        ));
 }
     public function ver_reservas($id){
